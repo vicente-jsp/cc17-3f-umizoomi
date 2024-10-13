@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor"
+    tools:context=".SignReg">
+
+    <Button
+        android:id="@+id/buttonLogin2"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_border"
+        android:backgroundTint="@null"
+        android:fontFamily="@font/homenaje"
+        android:text="Register"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:backgroundTint="@color/sideColors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.778" />
+
+    <TextView
+        android:id="@+id/appDescription"
+        android:layout_width="310dp"
+        android:layout_height="79dp"
+        android:fontFamily="@font/homenaje"
+        android:text="The quick brown fox jumps over the lazy dog. The lazy dog, in turn, dreams of chasing the quick brown fox. The quick brown fox, however, remains ever elusive, much to the dismay of the lazy dog."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="312dp"
+        android:layout_height="48dp"
+        android:background="@drawable/round_border"
+        android:backgroundTint="@null"
+        android:fontFamily="@font/homenaje"
+        android:text="Sign in"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:backgroundTint="@color/sideColors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.673" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="306dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/homenaje"
+        android:text="By signing in you agree to the Terms of Use and Privacy Policy"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="230dp"
+        android:layout_height="211dp"
+        app:layout_constraintBottom_toTopOf="@+id/appDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.69"
+        app:srcCompat="@drawable/logo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

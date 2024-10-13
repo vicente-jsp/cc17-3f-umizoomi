@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CC17MobileApplicationProject" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+   <style name="Theme.CC17MobileApplicationProject" parent="Base.Theme.CC17MobileApplicationProject" />
+
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboard"
+        android:icon="@drawable/rhealth"
+        android:title="@string/dashboard"
+        />
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/calendar"
+        android:title="@string/calendar"
+        />
+    <item
+        android:id="@+id/createMeal"
+        android:icon="@drawable/meal"
+        android:title="@string/create" />
+
+    <item
+        android:id="@+id/notifs"
+        android:icon="@drawable/notifications"
+        android:title="@string/notifications" />
+    <item
+        android:id="@+id/meds"
+        android:icon="@drawable/medication"
+        android:title="@string/meds"
+        />
+
+
+</menu>

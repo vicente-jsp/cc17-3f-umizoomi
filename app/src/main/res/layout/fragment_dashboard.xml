@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="1dp"
+    android:layout_marginEnd="1dp"
+    android:fillViewport="true"
+    android:id="@+id/fragment_dashboard"
+    android:background="@color/bgColor">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="Dashboard">
+
+        <TextView
+            android:id="@+id/dashNotifs"
+            android:layout_width="390dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/border_thin"
+            android:fontFamily="@font/homenaje"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/notifications" />
+
+        <Button
+            android:id="@+id/createMealSec"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_white_radius"
+            android:drawableStart="@drawable/add"
+            android:fontFamily="@font/homenaje"
+            android:gravity="center|start"
+            android:paddingLeft="10dp"
+            android:text="Add or Create Meal"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/dashNotifs" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="356dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/dashNotifs"
+            app:layout_constraintStart_toStartOf="@+id/dashNotifs"
+            app:layout_constraintTop_toBottomOf="@+id/createMealSec" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="390dp"
+            android:layout_height="320dp"
+            android:background="@drawable/bg_white"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/graphTitle">
+
+            <TextView
+                android:id="@+id/yAxisLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/homenaje"
+                android:rotation="-90"
+                android:shadowColor="@color/black"
+                android:text="grams"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineGraph"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/graphTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_white_top"
+            android:fontFamily="@font/homenaje"
+            android:paddingTop="15dp"
+            android:text="Daily Macros in a Week"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/xAxisLabel"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_white_bottom"
+            android:fontFamily="@font/homenaje"
+            android:text="Days"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_bottom"
+
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/averageTitle">
+
+            <TextView
+                android:id="@+id/caloriesAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Average Calories: " />
+
+            <TextView
+                android:id="@+id/proteinAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Average Protein: " />
+
+            <TextView
+                android:id="@+id/fatAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Average Fat: " />
+
+            <TextView
+                android:id="@+id/fiberAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Average Fiber: " />
+
+            <TextView
+                android:id="@+id/vitaminAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Average Vitamins: " />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/xAxisLabel"
+            app:layout_constraintStart_toStartOf="@+id/xAxisLabel"
+            app:layout_constraintTop_toBottomOf="@+id/xAxisLabel" />
+
+        <TextView
+            android:id="@+id/averageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bg_white_top"
+            android:fontFamily="@font/homenaje"
+            android:paddingTop="10dp"
+            android:text="Average Macros in a Week"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/xAxisLabel"
+            app:layout_constraintStart_toStartOf="@+id/xAxisLabel"
+            app:layout_constraintTop_toBottomOf="@+id/xAxisLabel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

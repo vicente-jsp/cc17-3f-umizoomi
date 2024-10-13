@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor"
+    tools:context=".HomeScreen">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@drawable/round_border"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:itemIconSize="@dimen/bottom_nav_icon_size"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toptoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_border"
+            android:paddingTop="10dp"
+            app:menu="@menu/top_bar"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark">
+
+            <ImageButton
+                android:id="@+id/profileicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:contentDescription="@string/profileicon"
+                android:src="@drawable/profile"
+                android:background="?attr/selectableItemBackgroundBorderless" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search"
+                android:text="@string/search"
+                app:itemIconSize="@dimen/bottom_nav_icon_size"
+                app:itemIconTint="@color/iconColors" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-38dp"
+        android:background="@drawable/round_border"
+        app:itemIconSize="@dimen/bottom_nav_icon_size"
+        app:itemIconTint="@color/iconColors"
+        app:itemTextColor="@color/iconColors"
+        app:labelVisibilityMode="selected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav"
+        tools:ignore="VisualLintBottomNav" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.example.cc17mobileapplicationproject.Dashboard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        tools:layout="@layout/fragment_dashboard" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

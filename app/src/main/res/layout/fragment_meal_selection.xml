@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/meal_selection_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="100dp"
+    android:background="@drawable/round_border"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/spinner_vegetables"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/vegetables" />
+
+    <Spinner
+        android:id="@+id/spinner_fruits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/fruits" />
+
+    <Spinner
+        android:id="@+id/spinner_grains"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/grains" />
+
+    <Spinner
+        android:id="@+id/spinner_protein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/protein_foods" />
+
+    <Spinner
+        android:id="@+id/spinner_dairy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/dairy" />
+
+    <EditText
+        android:id="@+id/editText_grams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter grams"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_add_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Food" />
+
+</LinearLayout>
