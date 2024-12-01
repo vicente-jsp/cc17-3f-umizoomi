@@ -12,6 +12,9 @@ import androidx.core.view.WindowInsetsCompat
 
 @Suppress("DEPRECATION")
 class Welcome : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
@@ -26,6 +29,7 @@ class Welcome : AppCompatActivity() {
             startActivity(intent)
             finish()
         }, 1500)
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_welcome)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

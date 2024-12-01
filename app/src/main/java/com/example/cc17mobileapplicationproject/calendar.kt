@@ -73,7 +73,7 @@ class calendar : Fragment() {
 
         val timePickerDialog = TimePickerDialog(requireContext(), { _, selectedHour, selectedMinute ->
             val selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-            val dateTime = "Reminder for $selectedDate at $selectedTime"
+            val dateTime = "$selectedDate at $selectedTime"
 
             // Show dialog to enter reminder description
             showDescriptionDialog(dateTime)

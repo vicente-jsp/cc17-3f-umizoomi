@@ -29,6 +29,7 @@ class Register_Activity : AppCompatActivity() {
         signin3.setOnClickListener {
             val intent = Intent(this, Welcome::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

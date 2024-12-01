@@ -9,6 +9,54 @@
     tools:context=".Welcome" >
 
     <TextView
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginBottom="36dp"
+        android:background="@color/black"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/black"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="16dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="352dp"
+        android:background="@color/black"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="16dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:background="@color/black"
+        android:text="TextView"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/welcomeText"
         android:layout_width="293dp"
         android:layout_height="104dp"

@@ -15,58 +15,17 @@
         android:layout_height="wrap_content"
         tools:context="Dashboard">
 
-        <TextView
-            android:id="@+id/dashNotifs"
-            android:layout_width="390dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/border_thin"
-            android:fontFamily="@font/homenaje"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/notifications" />
-
-        <Button
-            android:id="@+id/createMealSec"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_white_radius"
-            android:drawableStart="@drawable/add"
-            android:fontFamily="@font/homenaje"
-            android:gravity="center|start"
-            android:paddingLeft="10dp"
-            android:text="Add or Create Meal"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/dashNotifs" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="356dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/dashNotifs"
-            app:layout_constraintStart_toStartOf="@+id/dashNotifs"
-            app:layout_constraintTop_toBottomOf="@+id/createMealSec" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="390dp"
             android:layout_height="320dp"
-            android:background="@drawable/bg_white"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_white_top"
             android:orientation="horizontal"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.529"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/graphTitle">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/yAxisLabel"
@@ -76,7 +35,7 @@
                 android:fontFamily="@font/homenaje"
                 android:rotation="-90"
                 android:shadowColor="@color/black"
-                android:text="grams"
+                android:text="macros"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -91,28 +50,12 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/graphTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_white_top"
-            android:fontFamily="@font/homenaje"
-            android:paddingTop="15dp"
-            android:text="Daily Macros in a Week"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-        <TextView
             android:id="@+id/xAxisLabel"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:background="@drawable/bg_white_bottom"
             android:fontFamily="@font/homenaje"
-            android:text="Days"
+            android:text="Meal"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -121,15 +64,17 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_bottom"
 
+            android:background="@drawable/bg_white_bottom"
             android:orientation="vertical"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/averageTitle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/averageTitle"
             app:layout_constraintTop_toBottomOf="@+id/averageTitle">
 
             <TextView
@@ -138,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/homenaje"
-                android:textColor="@color/black"
+                android:textAlignment="viewStart"
+                android:textColor="@color/iconColors"
                 android:textSize="20sp"
                 tools:text="Average Calories: " />
 
@@ -148,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/homenaje"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="20sp"
                 tools:text="Average Protein: " />
 
@@ -158,29 +104,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/homenaje"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
                 android:textSize="20sp"
                 tools:text="Average Fat: " />
 
-            <TextView
-                android:id="@+id/fiberAverage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/homenaje"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                tools:text="Average Fiber: " />
-
-            <TextView
-                android:id="@+id/vitaminAverage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/homenaje"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                tools:text="Average Vitamins: " />
         </LinearLayout>
 
         <View
@@ -195,19 +122,109 @@
 
         <TextView
             android:id="@+id/averageTitle"
-            android:layout_width="0dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
             android:background="@drawable/bg_white_top"
             android:fontFamily="@font/homenaje"
             android:paddingTop="10dp"
-            android:text="Average Macros in a Week"
+            android:text="Average Macros"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/xAxisLabel"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/xAxisLabel"
             app:layout_constraintTop_toBottomOf="@+id/xAxisLabel" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="190dp"
+            android:layout_height="248dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bg_white_radius"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/xAxisLabel">
+
+            <EditText
+                android:id="@+id/etWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/homenaje"
+                android:hint="Enter Weight (kg)"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/homenaje"
+                android:hint="Enter Height (m)"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etWeight" />
+
+            <TextView
+                android:id="@+id/tvBmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/homenaje"
+                android:text="BMI: --"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etHeight" />
+
+            <TextView
+                android:id="@+id/tvBmiCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/homenaje"
+                android:text="Category: --"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvBmi" />
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_border"
+                android:fontFamily="@font/homenaje"
+                android:text="Update"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </ScrollView>

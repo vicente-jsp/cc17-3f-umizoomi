@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,13 +22,13 @@ class StartActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+            val logoText = findViewById<TextView>(R.id.textView8)
             val splashIcon = findViewById<ImageView>(R.id.splashIcon)
 
-            // Load the rotate animation
             val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate)
+            val textAnim = AnimationUtils.loadAnimation(this, R.anim.fade)
 
-            // Start the animation on the splash icon
+            logoText.startAnimation(textAnim)
             splashIcon.startAnimation(rotateAnimation)
 
         Handler(Looper.getMainLooper()).postDelayed({

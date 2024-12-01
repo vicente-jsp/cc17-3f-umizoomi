@@ -1,67 +1,7 @@
 <resources>
-    <string-array name="meal_recommendations">
-        <item>Grilled Chicken with Quinoa and Steamed Broccoli</item>
-        <item>Oatmeal with Almonds, Bananas, and Berries</item>
-        <item>Whole Wheat Sandwich with Turkey, Lettuce, and Tomato</item>
-        <item>Grilled Salmon with Brown Rice and Asparagus</item>
-        <item>Tofu Stir-fry with Mixed Vegetables and Rice</item>
-        <item>Spinach Salad with Grilled Shrimp and Avocado</item>
-        <item>Vegetable Soup with a Whole Wheat Roll</item>
-        <item>Greek Yogurt with Honey and Fresh Fruit</item>
-        <item>Eggs, Avocado, and Whole Wheat Toast</item>
-        <item>Lentil Soup with a Side Salad</item>
-        <item>Chicken and Vegetable Kebabs with Couscous</item>
-        <item>Whole Wheat Pasta with Tomato Sauce and Grilled Vegetables</item>
-        <item>Baked Sweet Potato with Black Beans and Cheese</item>
-        <item>Grilled Tilapia with Steamed Spinach and Rice</item>
-        <item>Vegetable Wrap with Hummus</item>
-        <item>Mixed Berry Smoothie with Protein Powder</item>
-        <item>Scrambled Eggs with Sautéed Spinach and Mushrooms</item>
-        <item>Quinoa Salad with Grilled Vegetables and Feta</item>
-        <item>Chicken Caesar Salad with Whole Wheat Croutons</item>
-        <item>Avocado Toast with a Poached Egg</item>
-    </string-array>
 
-    <string-array name="vegetables">
-        <item>Broccoli</item>
-        <item>Carrots</item>
-        <item>Spinach</item>
-        <item>Cauliflower</item>
-        <item>Tomatoes</item>
-    </string-array>
 
-    <string-array name="fruits">
-        <item>Apples</item>
-        <item>Bananas</item>
-        <item>Oranges</item>
-        <item>Strawberries</item>
-        <item>Grapes</item>
-    </string-array>
-
-    <string-array name="grains">
-        <item>Brown Rice</item>
-        <item>Oats</item>
-        <item>Whole Wheat Bread</item>
-        <item>Quinoa</item>
-        <item>Barley</item>
-    </string-array>
-
-    <string-array name="protein_foods">
-        <item>Chicken Breast</item>
-        <item>Eggs</item>
-        <item>Tofu</item>
-        <item>Salmon</item>
-        <item>Lentils</item>
-    </string-array>
-
-    <string-array name="dairy">
-        <item>Milk</item>
-        <item>Cheese</item>
-        <item>Yogurt</item>
-        <item>Butter</item>
-        <item>Almond Milk</item>
-    </string-array>
-    <string name="app_name">MED</string>
+    <string name="app_name">Medicalorie</string>
     <string name="meds">Medications</string>
     <string name="calendar">Calendar</string>
     <string name="create">Create Meal</string>

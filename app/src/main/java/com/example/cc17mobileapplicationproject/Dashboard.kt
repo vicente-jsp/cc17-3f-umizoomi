@@ -1,5 +1,7 @@
 package com.example.cc17mobileapplicationproject
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.cc17mobileapplicationproject.databinding.FragmentDashboardBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
@@ -16,169 +22,145 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
+
 
 
 class Dashboard : Fragment() {
 
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var binding: FragmentDashboardBinding
     private lateinit var lineChart: LineChart
     private lateinit var caloriesAverage: TextView
     private lateinit var proteinAverage: TextView
     private lateinit var fatAverage: TextView
-    private lateinit var fiberAverage: TextView
-    private lateinit var vitaminAverage: TextView
-    private lateinit var button: Button
+    private lateinit var foodDao: FoodDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        button = view.findViewById(R.id.createMealSec)
-        button.setOnClickListener {
-            // Navigate to AnotherFragment
-            val anotherFragment = createmeal()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, anotherFragment) // Replace 'fragment_container' with your container ID
-                .commit()
-        }
-        return view
-    }
+        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        val db = FoodDatabase.getDatabase(requireContext())
+        foodDao = db.foodDao()
 
+        return binding.root
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         caloriesAverage = view.findViewById(R.id.caloriesAverage)
         proteinAverage = view.findViewById(R.id.proteinAverage)
         fatAverage = view.findViewById(R.id.fatAverage)
-        fiberAverage = view.findViewById(R.id.fiberAverage)
-        vitaminAverage = view.findViewById(R.id.vitaminAverage)
-
         lineChart = view.findViewById(R.id.lineGraph)
 
-        setupChart()
+        loadChartData()
 
-        val textView: TextView = view.findViewById(R.id.dashNotifs)
+        sharedPreferences = requireContext().getSharedPreferences("BMI_PREFS", Context.MODE_PRIVATE)
 
-        textView.text = "No Notifications"
+        // Load saved weight and height
+        val savedWeight = sharedPreferences.getFloat("WEIGHT", 0f)
+        val savedHeight = sharedPreferences.getFloat("HEIGHT", 0f)
+
+        if (savedWeight != 0f) binding.etWeight.setText(savedWeight.toString())
+        if (savedHeight != 0f) binding.etHeight.setText(savedHeight.toString())
+
+        // Handle button click
+        binding.btnUpdate.setOnClickListener {
+            val weightInput = binding.etWeight.text.toString()
+            val heightInput = binding.etHeight.text.toString()
+
+            if (weightInput.isNotEmpty() && heightInput.isNotEmpty()) {
+                val weight = weightInput.toFloat()
+                val height = heightInput.toFloat()
+
+                saveData(weight, height)
+
+                val bmi = calculateBMI(weight, height)
+
+                val bmiCategory = getBMICategory(bmi)
+
+                binding.tvBmi.text = String.format("BMI: %.2f", bmi)
+                binding.tvBmiCategory.text = "Category: $bmiCategory"
+            }
+        }
     }
 
+    private fun saveData(weight: Float, height: Float) {
+        val editor = sharedPreferences.edit()
+        editor.putFloat("WEIGHT", weight)
+        editor.putFloat("HEIGHT", height)
+        editor.apply()
+    }
 
-    private fun setupChart() {
-        val calorieEntries = ArrayList<Entry>()
-        val proteinEntries = ArrayList<Entry>()
-        val fatEntries = ArrayList<Entry>()
-        val fiberEntries = ArrayList<Entry>()
-        val vitaminEntries = ArrayList<Entry>()
+    private fun calculateBMI(weight: Float, height: Float): Float {
+        return weight / (height * height)
+    }
 
-        // Sample data: Day 1 to Day 7
-        calorieEntries.apply {
-            add(Entry(0f, 200f))
-            add(Entry(1f, 200f))
-            add(Entry(2f, 330f))
-            add(Entry(3f, 210f))
-            add(Entry(4f, 400f))
-            add(Entry(5f, 300f))
-            add(Entry(6f, 380f))
+    private fun getBMICategory(bmi: Float): String {
+        return when {
+            bmi < 18.5 -> "Underweight"
+            bmi in 18.5..24.9 -> "Normal weight"
+            bmi in 25.0..29.9 -> "Overweight"
+            else -> "Obese"
         }
+    }
 
-        proteinEntries.apply {
-            add(Entry(0f, 150f))
-            add(Entry(1f, 160f))
-            add(Entry(2f, 140f))
-            add(Entry(3f, 170f))
-            add(Entry(4f, 180f))
-            add(Entry(5f, 190f))
-            add(Entry(6f, 200f))
-        }
+    private fun loadChartData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val meals = foodDao.getLastFiveMeals()
 
-        fatEntries.apply {
-            add(Entry(0f, 70f))
-            add(Entry(1f, 60f))
-            add(Entry(2f, 75f))
-            add(Entry(3f, 65f))
-            add(Entry(4f, 80f))
-            add(Entry(5f, 90f))
-            add(Entry(6f, 85f))
-        }
+            if (meals.isNotEmpty()) {
+                val calorieEntries = ArrayList<Entry>()
+                val proteinEntries = ArrayList<Entry>()
+                val fatEntries = ArrayList<Entry>()
 
-        fiberEntries.apply {
-            add(Entry(0f, 25f))
-            add(Entry(1f, 30f))
-            add(Entry(2f, 20f))
-            add(Entry(3f, 22f))
-            add(Entry(4f, 28f))
-            add(Entry(5f, 32f))
-            add(Entry(6f, 35f))
-        }
+                meals.reversed().forEachIndexed { index, meal ->
+                    calorieEntries.add(Entry(index.toFloat(), meal.calories))
+                    proteinEntries.add(Entry(index.toFloat(), meal.protein))
+                    fatEntries.add(Entry(index.toFloat(), meal.fats))
+                }
 
-        vitaminEntries.apply {
-            add(Entry(0f, 10f))
-            add(Entry(1f, 15f))
-            add(Entry(2f, 12f))
-            add(Entry(3f, 20f))
-            add(Entry(4f, 18f))
-            add(Entry(5f, 22f))
-            add(Entry(6f, 25f))
-        }
-        // Calculate averages
-        val avgCalories = calorieEntries.map { it.y }.average().roundToInt()
-        val avgProtein = proteinEntries.map { it.y }.average().roundToInt()
-        val avgFat = fatEntries.map { it.y }.average().roundToInt()
-        val avgFiber = fiberEntries.map { it.y }.average().roundToInt()
-        val avgVitamins = vitaminEntries.map { it.y }.average().roundToInt()
+                val avgCalories = meals.map { it.calories }.average().roundToInt()
+                val avgProtein = meals.map { it.protein }.average().roundToInt()
+                val avgFat = meals.map { it.fats }.average().roundToInt()
 
-        // Display averages in the TextView elements
-        caloriesAverage.text = "Average Calories:         $avgCalories"
-        caloriesAverage.setTextColor(Color.rgb(204,204,0))
-        proteinAverage.text =  "Average Protein:          $avgProtein"
-        proteinAverage.setTextColor(Color.RED)
-        fatAverage.text =      "Average Fat:                $avgFat"
-        fatAverage.setTextColor(Color.rgb(222,184,135))
-        fiberAverage.text =    "Average Fiber:            $avgFiber"
-        fiberAverage.setTextColor(Color.GRAY)
-        vitaminAverage.text =  "Average Vitamins:     $avgVitamins"
-        vitaminAverage.setTextColor(Color.rgb(34,139,34))
+                updateUI(avgCalories, avgProtein, avgFat, calorieEntries, proteinEntries, fatEntries, meals.size)
+            }
+        }
+    }
 
+    private fun updateUI(
+        avgCalories: Int,
+        avgProtein: Int,
+        avgFat: Int,
+        calorieEntries: List<Entry>,
+        proteinEntries: List<Entry>,
+        fatEntries: List<Entry>,
+        mealCount: Int
+    ) {
+        caloriesAverage.text = "Average Calories: $avgCalories"
+        proteinAverage.text = "Average Protein: $avgProtein"
+        fatAverage.text = "Average Fat: $avgFat"
 
+        val calorieDataSet = LineDataSet(calorieEntries, "Calories").apply { color = Color.GREEN }
+        val proteinDataSet = LineDataSet(proteinEntries, "Protein").apply { color = Color.RED }
+        val fatDataSet = LineDataSet(fatEntries, "Fat").apply { color = Color.BLUE }
 
-        val calorieDataSet = LineDataSet(calorieEntries, "Calories").apply {
-            color = Color.rgb(204,204,0)
-        }
-        val proteinDataSet = LineDataSet(proteinEntries, "Protein").apply {
-            color = Color.RED
-        }
-        val fatDataSet = LineDataSet(fatEntries, "Fat").apply {
-            color = Color.rgb(222,184,135)
-        }
-        val fiberDataSet = LineDataSet(fiberEntries, "Fiber").apply {
-            color = Color.GRAY
-        }
-        val vitaminDataSet = LineDataSet(vitaminEntries, "Vitamins").apply {
-            color = Color.rgb(34,139,34)
-        }
-
-        val lineData = LineData(calorieDataSet, proteinDataSet, fatDataSet, fiberDataSet, vitaminDataSet)
+        val lineData = LineData(calorieDataSet, proteinDataSet, fatDataSet)
         lineChart.data = lineData
 
-        val xAxis: XAxis = lineChart.xAxis
+        val xAxis = lineChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
+        xAxis.valueFormatter = IndexAxisValueFormatter((1..mealCount).map { it.toString() })
+        xAxis.granularity = 1f
 
-        val days = arrayOf("1", "2", "3", "4", "5", "6", "7")
-        xAxis.valueFormatter = IndexAxisValueFormatter(days)
-        xAxis.axisMinimum = 0f
-        xAxis.axisMaximum = 6f
+        lineChart.axisLeft.axisMinimum = 0f
+        lineChart.axisRight.isEnabled = false
 
-        val yAxisLeft: YAxis = lineChart.axisLeft
-        yAxisLeft.axisMinimum = 0f
-        yAxisLeft.axisMaximum = 400f
-
-        val yAxisRight: YAxis = lineChart.axisRight
-        yAxisRight.isEnabled = false
-
+        lineChart.description = Description().apply { text = "Macros by Meal" }
         lineChart.invalidate()
-
-        lineChart.description.isEnabled = false
     }
 }

@@ -1,61 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:id="@+id/meal_selection_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/createMeal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="20dp"
+    tools:context=".createmeal">
 
-    <TextView
-        android:id="@+id/tv_select_meal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select your meal:"
-        android:textSize="18sp"
-        android:paddingBottom="16dp" />
 
-    <RadioGroup
-        android:id="@+id/meal_type_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTodoItems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddFood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etProtein" />
 
-        <RadioButton
-            android:id="@+id/rb_breakfast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Breakfast" />
+    <EditText
+        android:id="@+id/etFood"
+        android:layout_width="330dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/rb_lunch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lunch" />
+    <EditText
+        android:id="@+id/etCalories"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:hint="Calories"
+        app:layout_constraintEnd_toEndOf="@+id/etFood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etFood"
+        app:layout_constraintTop_toBottomOf="@+id/etFood" />
 
-        <RadioButton
-            android:id="@+id/rb_dinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dinner" />
+    <EditText
+        android:id="@+id/etFats"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:hint="Enter Fats (g)"
+        app:layout_constraintStart_toStartOf="@+id/etCalories"
+        app:layout_constraintTop_toBottomOf="@+id/etCalories" />
 
-        <RadioButton
-            android:id="@+id/rb_meal_recommendations"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Meal Recommendations" />
-    </RadioGroup>
+    <EditText
+        android:id="@+id/etProtein"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:hint="Enter Protein (g)"
+        app:layout_constraintStart_toStartOf="@+id/etFats"
+        app:layout_constraintTop_toBottomOf="@+id/etFats" />
 
     <Button
-        android:id="@+id/btn_proceed"
+        android:id="@+id/btnAddFood"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="28dp"
+        android:background="@drawable/round_border"
+        android:elevation="0dp"
+        android:fontFamily="@font/homenaje"
+        android:text="Add Food"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/round_border"
+        android:elevation="0dp"
+        android:fontFamily="@font/homenaje"
+        android:text="Clear"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAddFood"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTotalCaloriesStatic"
+        android:layout_width="108dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/homenaje"
+        android:text="Total Calories: "
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etCalories"
+        app:layout_constraintStart_toEndOf="@+id/etCalories" />
+
+    <TextView
+        android:id="@+id/tvTotalCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_border"
         android:fontFamily="@font/homenaje"
-        android:text="Proceed"
+        android:text=" "
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-    <ListView
-        android:id="@+id/listView_meal_items"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTotalCaloriesStatic"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalCaloriesStatic" />
+
+    <TextView
+        android:id="@+id/tvTotalFatsStatic"
+        android:layout_width="108dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/homenaje"
+        android:text="Total Fats: "
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etFats"
+        app:layout_constraintStart_toEndOf="@+id/etFats" />
+
+    <TextView
+        android:id="@+id/tvTotalFats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/homenaje"
+        android:text="0g"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTotalFatsStatic"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalFatsStatic" />
+
+    <TextView
+        android:id="@+id/tvTotalProteinStatic"
+        android:layout_width="108dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/homenaje"
+        android:text="Total Protein: "
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etProtein"
+        app:layout_constraintStart_toEndOf="@+id/etProtein" />
+
+    <TextView
+        android:id="@+id/tvTotalProtein"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/homenaje"
+        android:text="0g"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tvTotalProteinStatic"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalProteinStatic" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

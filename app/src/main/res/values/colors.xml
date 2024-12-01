@@ -6,4 +6,5 @@
     <color name="bgColor">#BACD92</color>
     <color name="sideColors">#EECAD5</color>
     <color name="iconColors">#347928</color>
+    <color name="blue">#0000FF</color>
 </resources>

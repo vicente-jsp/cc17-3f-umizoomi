@@ -30,7 +30,7 @@
     <CalendarView
         android:id="@+id/calendarMismo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="307dp" />
 
     <TextView
         android:id="@+id/textSelDate"

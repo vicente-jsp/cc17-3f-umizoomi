@@ -29,6 +29,7 @@ class Signin_Activity : AppCompatActivity() {
         backbutton2.setOnClickListener {
             val intent = Intent(this, Welcome::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
