@@ -66,12 +66,13 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
 
             android:background="@drawable/bg_white_bottom"
             android:orientation="vertical"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="@+id/averageTitle"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/averageTitle"
@@ -83,7 +84,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/homenaje"
-                android:textAlignment="viewStart"
                 android:textColor="@color/iconColors"
                 android:textSize="20sp"
                 tools:text="Average Calories: " />
@@ -107,6 +107,50 @@
                 android:textColor="@color/blue"
                 android:textSize="20sp"
                 tools:text="Average Fat: " />
+
+            <TextView
+                android:id="@+id/totalTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Total Macros"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/totalCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Calories: 0"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/iconColors"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/totalProtein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Protein: 0"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/red"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/totalFat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/homenaje"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:text="Total Fat: 0"
+                 />
 
         </LinearLayout>
 
@@ -132,12 +176,14 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/xAxisLabel"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/xAxisLabel"
             app:layout_constraintTop_toBottomOf="@+id/xAxisLabel" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="190dp"
             android:layout_height="248dp"
             android:layout_marginTop="44dp"
@@ -223,6 +269,34 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="390dp"
+            android:layout_height="300dp"
+            android:background="@drawable/bg_white_radius"
+            android:orientation="vertical"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

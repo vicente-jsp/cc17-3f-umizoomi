@@ -23,7 +23,7 @@ class Credentials : AppCompatActivity() {
 
         binding.buttonCont.setOnClickListener {
             saveUserData()
-            val intent = Intent(this, Settings::class.java)
+            val intent = Intent(this, HomeScreen::class.java)
             startActivity(intent)
             finish()
         }
